@@ -1,13 +1,19 @@
 // * Initiate Phaser Game
 const config = {
   type: Phaser.AUTO,
+  scale: {
+    mode: Phaser.Scale.FIT,
+    autoCenter: Phaser.Scale.CENTER_BOTH,
+    /* width: 360,
+    heigth: 640 */
+  },
   width: 360,
-  height: 641,
+  height: window.innerHeight,
   physics: {
     default: 'arcade',
     arcade: {
       gravity: { y: 0 },
-      debug: true // false
+      debug: false // false
     }
   },
   scene: {
@@ -58,10 +64,10 @@ function create() {
   player = this.physics.add.sprite(37.5, 0, 'player');//(config.width / 2, 0, 'player');
   player.setOrigin(0, 0); // (0.5, 0)
   player.setY(config.height - 200);
-  
+
   // * Set left and right button
-  leftButton = this.add.sprite(config.width / 4, config.height - 50, 'leftButton').setInteractive().setScale(0.1);
-  rightButton = this.add.sprite(config.width * 3 / 4, config.height - 50, 'rightButton').setInteractive().setScale(0.1);
+  leftButton = this.add.sprite(config.width / 4, config.height - 50, 'leftButton').setInteractive().setScale(0.1).setDepth(999);;
+  rightButton = this.add.sprite(config.width * 3 / 4, config.height - 50, 'rightButton').setInteractive().setScale(0.1).setDepth(999);;
 
   leftButton.on('pointerdown', () => movePlayer(-1));
   rightButton.on('pointerdown', () => movePlayer(1));
@@ -72,6 +78,7 @@ function create() {
     16, 16, "Jarak: ",
     { fontsize: '32px', fill: '#fff', }
   );
+  distanceText.setDepth(999);
 
   // * Obstacles
   //obstaclesGroup = this.add.group();
