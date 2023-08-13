@@ -58,15 +58,7 @@ function create() {
   player = this.physics.add.sprite(37.5, 0, 'player');//(config.width / 2, 0, 'player');
   player.setOrigin(0, 0); // (0.5, 0)
   player.setY(config.height - 200);
-  /* this.tweens.add({
-    targets: player,
-    x: targetX,
-    flipX: true,
-    yoyo: true,
-    duration: 3000,
-    repeat: 1
-  }); */
-
+  
   // * Set left and right button
   leftButton = this.add.sprite(config.width / 4, config.height - 50, 'leftButton').setInteractive().setScale(0.1);
   rightButton = this.add.sprite(config.width * 3 / 4, config.height - 50, 'rightButton').setInteractive().setScale(0.1);
@@ -131,7 +123,6 @@ function movePlayer(direction) {
   const targetX = laneCenterX[targetLane];
 
   player.x = targetX;
-
   // Menambahkan animasi perpindahan player
 }
 
